@@ -17,6 +17,7 @@ void selSort(int *ptr,int size)
 	    ptr[indexMin]=temp;
 	}
 }
+
 void inSort(int *ptr,int size)
 {   int current=0,j=0;
 	for(int i=1;i<size;i++)

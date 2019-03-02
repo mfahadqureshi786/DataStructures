@@ -2,25 +2,26 @@
 using namespace std;
 struct Node
 {
-	int data=0;
+	bstNode *data=0;
 	struct Node *next=0;
 };
 class LinkedList
 {
 	private:
 		struct Node *head;
+		int size;
 		public:
 			LinkedList()
 			{
 				head=0;
-				
+				size=0;
 			}
-			void enqueue(int data)
+			void enqueue(bstNode *ptr)
 			{
 				if(head==0)
 				{
 					head=new struct Node;
-					head->data=data;
+					head->data=ptr;
 					head->next=0;
 				}
 				else
@@ -32,28 +33,32 @@ class LinkedList
 						curr=curr->next;
 					}
 					prev->next=new struct Node;
-					prev->next->data=data;
+					prev->next->data=ptr;
 					
 				}
+				size++;
 			}
-			int dequeue()
+			bstNode* dequeue()
 			{   
 				if(head!=0)
 				{
-				struct Node *temp=head->next;	int tempData=0;
+				struct Node *temp=head->next;	bstNode* tempData=0;
 				tempData=head->data;
 				delete head;
 				head=temp;
+				size--;
 				return tempData;
 				}
+				
 			}
-			void toString()
-			{   struct Node *curr=head;
-				while(curr!=0)
+			
+			bool isEmpty()
+			{
+				if(this->size==0)
 				{
-				cout<<curr->data<<' ';
-				curr=curr->next;	
+					return true;
 				}
+				return false;
 			}
 };
 int main()

@@ -113,6 +113,14 @@ class Bst
 	}
 	else return 1+max(findHeight(root->left),findHeight(root->right));
 	}
+	void secondLargest(Node *root,int i)
+	{
+		if(root==0)
+		return;
+		secondLargest(root->right,i+1);
+		if(i==0)
+		cout<< root->data;
+	}
 };
 int main()
 {
@@ -122,5 +130,6 @@ int main()
 	A.root=A.insert(A.root,60);
 	A.root=A.insert(A.root,20);
 	//cout<<A.root->data; 
-    A.postOrder(A.root);
+    //A.postOrder(A.root);
+    A.secondLargest(A.root,0);
 }

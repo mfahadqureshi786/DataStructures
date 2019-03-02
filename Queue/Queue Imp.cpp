@@ -53,15 +53,12 @@ if(ptr[i]==0)
 ptr[i]=a;
 break;	
 }	
-
 }
-
 }	
 else
 {
 cout<<"Overflow";	
 }	
-	
 }
 
 inline void Dequeue()

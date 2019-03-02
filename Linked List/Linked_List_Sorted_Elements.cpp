@@ -50,46 +50,25 @@ if(head==0)
 head=new Node(data);
 head->setNextNode(0);	
 }
-
+else if(head->getData()>=data)
+{
+Node *curr=head;
+Node *temp=new Node(data);
+temp->setNextNode(head);
+head=temp;
+}
 else
 {
 Node *curr=head;
-//Jab head data >NewNode data
-if(head->getData()>=data)
-{
-Node *temp=new Node(head->getData());
-temp->setNextNode(head->getNextNode());
-
-head->setData(data);
-head->setNextNode(temp);
-}
-else
-{
-
-
 //Jab data is sorted and we find position to insert our node
-while(curr!=0)
+while(curr->getNextNode()!=0 &&curr->getNextNode()->getData()<data)
 {
-if(curr->getNextNode()!=0)
-{
-
-if(curr->getData()<=data && curr->getNextNode()->getData()>=data )
-{
-Node *NewNode=new Node(data);
-NewNode->setNextNode(curr->getNextNode());
-curr->setNextNode(NewNode);
-break;
-}
-}
-else if(curr->getData() <=data)
-{
-Node *NewNode=new Node(data);
-curr->setNextNode(NewNode);
-break;
-}
 curr=curr->getNextNode();
 }
-}
+Node *newNode=new Node;
+newNode->setNextNode(curr->getNextNode())	;
+newNode->setData(data);
+curr->setNextNode(newNode);
 }	
 }
 void ToString()
@@ -110,8 +89,10 @@ int main()
 	LL.insert(1);
 	LL.insert(2);
 	LL.insert(3);
-	LL.insert(3);
-	LL.insert(2);
-	LL.insert(1);
+	LL.insert(6);
+	LL.insert(5);
+	LL.insert(8);
+	LL.insert(9);
+	LL.insert(7);
 	LL.ToString();
 }

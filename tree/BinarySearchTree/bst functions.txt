@@ -1,0 +1,88 @@
+//Same tree
+public boolean sameTree(Node root1, Node root2){
+        if(root1 == null && root2 == null){
+            return true;
+        }
+        if(root1 == null || root2 == null){
+            return false;
+        }
+        
+        return root1.data == root2.data && 
+                sameTree(root1.left, root2.left) &&
+sameTree(root1.right, root2.right);
+
+//Size of bst
+public int size(Node root){
+        if(root == null){
+            return 0;
+        }
+        return size(root.left) + size(root.right) + 1;
+}
+//Is bst or not
+private boolean isBST(Node root, int min, int max){
+        if(root == null){
+            return true;
+        }
+        if(root.data <= min || root.data > max){
+            return false;
+        }
+        return isBST(root.left, min, root.data) && isBST(root.right, root.data, max);
+    }
+
+//bst iterative insertion
+	void insert(int data)	
+		{
+			if(root==0)
+			{
+				root=new struct Node;
+				root->data=data;
+			}
+			else{
+			
+			Node *curr=root,*prev=0;
+			int setLeft=0;
+			while(curr!=0)
+			{
+				prev=curr;
+				if(data<curr->data)
+				{
+				setLeft=1;
+				curr=curr->left;
+				}
+				else
+				{
+					setLeft=0;
+					curr=curr->right;
+				}
+			}
+			if(setLeft==1)
+			{
+				prev->left=new Node;
+				prev->left->data=data;
+			}
+			else
+			{
+				prev->right=new Node;
+				prev->right->data=data;
+			}
+		}
+//Level order traversal
+public void levelOrder(Node root){
+        if(root == null){
+            System.out.println("Please enter a valid tree!");
+            return;
+        }
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.push(root);
+        System.out.println();
+        while(queue.size() > 0){
+            root = queue.pop();
+            System.out.print(root.data + " ");
+            if(root.left != null){
+                queue.push(root.left);
+            }
+            if(root.right != null){
+                queue.push(root.right);
+            }
+        }
+}
