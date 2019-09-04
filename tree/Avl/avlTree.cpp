@@ -23,7 +23,9 @@ class AVL
 		{
 		root=0;		
 		}
-		
+		//Convention followed:Height of a tree with single node is 0
+	        //Height of Node:Longest path of edges from that node to leaf node
+	        //Depth of Node:No. of edges from that node to root node.
 		int findHeight(struct Node *root)
 	{
 	if(root==0)	
